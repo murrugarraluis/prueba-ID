@@ -33,6 +33,12 @@ class NoteController extends Controller
         $note->group()->associate($request->group_id)->save();
         $note->user()->associate($request->user_id)->save();
 
+        if ($request->image) {
+            // Path para registrar imagen
+            $path = $request->image->storeAs('public/notes', $note->id . '_' . $note->title . '.' . $request->image->extension());
+            $note->image = $path;
+            $note->save();
+        }
         return (new NoteResource($note))->additional(['message' => 'Nota Registrada']);
     }
 
