@@ -21,5 +21,6 @@ Route::post('login', [AuthenticationController::class, 'login']);
 Route::post('register', [AuthenticationController::class, 'register']);
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('logout', [AuthenticationController::class, 'logout']);
+    Route::get('groups/{group}/notes', [GroupController::class, 'index_notes']);
     Route::post('groups/{group}/join', [GroupController::class, 'join']);
 });

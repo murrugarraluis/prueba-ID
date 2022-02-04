@@ -12,4 +12,8 @@ class Group extends Model
     {
         return $this->belongsToMany(User::class);
     }
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
 }
