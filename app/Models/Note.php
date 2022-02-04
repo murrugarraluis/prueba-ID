@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Note extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'title',
+        'description',
+    ];
     public function group()
     {
         return $this->belongsTo(Group::class);
