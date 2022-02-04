@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\JoinGroupRequest;
+use App\Http\Resources\GroupResource;
 use App\Http\Resources\NoteGroupResource;
 use App\Models\Group;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //
+        return GroupResource::collection(Group::all());
     }
     public function index_notes(Group $group)
     {

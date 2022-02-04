@@ -42,4 +42,14 @@ class GroupControllerTest extends TestCase
             ->assertStatus(200)
             ->assertJson(['data' => []]);
     }
+    public function test_index()
+    {
+        $this->withExceptionHandling();
+        $user = User::factory()->create(['name' => 'Luis', 'email' => 'Luis@gmail.com', 'password' => bcrypt('123456')]);
+
+        $group = Group::factory()->create(['name' => 'Grupo A1']);
+        $this->actingAs($user)->withSession(['banned' => false])->getJson("api/$this->uri")
+            ->assertStatus(200)
+            ->assertJson(['data' => []]);
+    }
 }
