@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\{
     AuthenticationController,
     GroupController,
+    MailController,
     NoteController,
 };
 use Illuminate\Support\Facades\Route;
@@ -28,3 +29,4 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('groups', GroupController::class);
     Route::apiResource('notes', NoteController::class);
 });
+Route::get('send-email', [MailController::class, 'sendEmail']);
