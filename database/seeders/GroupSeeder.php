@@ -18,7 +18,7 @@ class GroupSeeder extends Seeder
             'name' => 'Grupo A1'
         ]);
         Group::create([
-            'name' => 'Grupo A2'
+            'name' => 'Grupo B1'
         ]);
     }
 }

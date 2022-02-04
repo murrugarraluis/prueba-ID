@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\JoinGroupRequest;
 use App\Models\Group;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,12 @@ class GroupController extends Controller
     {
         //
     }
-
+    public function join(Group $group, JoinGroupRequest $request)
+    {
+        $user = $request->id_user;
+        $group->users()->attach($user);
+        return response()->json(['message' => 'Usuario Registrado en Grupo'], 201);
+    }
     /**
      * Display the specified resource.
      *
