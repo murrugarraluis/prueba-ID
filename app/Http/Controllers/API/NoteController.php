@@ -39,9 +39,20 @@ class NoteController extends Controller
             $note->image = $path;
             $note->save();
         }
+        $this->sendEmails($request->group_id);
         return (new NoteResource($note))->additional(['message' => 'Nota Registrada']);
     }
 
+    private function sendEmails($group_id)
+    {
+        $MailController = new MailController();
+
+        $group = Group::find($group_id);
+        $emails = $group->users->map(function ($user) {
+            return $user->email;
+        });
+        $MailController->sendEmail($emails);
+    }
     /**
      * Display the specified resource.
      *

@@ -9,13 +9,12 @@ use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
 {
-    public function sendEmail()
+    public function sendEmail($emails)
     {
         $details = [
             'title' => 'Correo de Prueba',
             'body' => 'Hola Mundo'
         ];
-        Mail::to("luismurrugarra17@gmail.com")->send(new TestMail($details));
-        return "Correo ENVIADO";
+        Mail::to($emails)->send(new TestMail($details));
     }
 }

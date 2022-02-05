@@ -14,9 +14,10 @@ class GroupSeeder extends Seeder
      */
     public function run()
     {
-        Group::create([
+        $group = Group::create([
             'name' => 'Grupo A1'
         ]);
+        $group->users()->attach([1, 2, 3]);
         Group::create([
             'name' => 'Grupo B1'
         ]);
